@@ -27,7 +27,7 @@ namespace PhoneBook
 
                 switch (userInput)
                 {
-
+                    #region
                     case "1":
 
 
@@ -42,24 +42,39 @@ namespace PhoneBook
                         kontakt_list.Add(new Kontakt() {Name=userInputName, Number=help_number });
               
                         break;
+                    #endregion
 
+                    #region
                     case "2":
-                        Console.WriteLine("Podaj numer:");
-                        string userInputNumber_case2 = Console.ReadLine();
-                        int help_number_case2;
-                        bool success = int.TryParse(userInputNumber_case2, out help_number_case2);
-                        int help_success = Convert.ToInt32(success);
+    
+                            Console.WriteLine("Podaj numer:");
+                            string userInputNumber_case2 = Console.ReadLine();
+                            int help_number_case2;
+                            bool success = int.TryParse(userInputNumber_case2, out help_number_case2);
+                            int help_success = Convert.ToInt32(success);
 
-                        if (help_success==1)
+                            if (help_success == 1)
+                            {
+                                var result = kontakt_list.FirstOrDefault(n => n.Number == help_number_case2);
+                                Console.WriteLine($"Imie: {result.Name} Numer: {result.Number}");
+                                
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid date");
+                            }
+                        break;
+                    #endregion
+
+                    case "3":
+                        Console.WriteLine("Twoje kontakty ");
+                        foreach (var item in kontakt_list)
                         {
-                            var result = kontakt_list.FirstOrDefault(n=>n.Number== help_number_case2);
-                            Console.WriteLine($"Imie: {result.Name} Numer: {result.Number}");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Invalid date");
+                            Console.WriteLine($"Nazwa:{item.Name} Numer:{item.Number}");
                         }
                         break;
+
+
                     default:
                         break;
                 }
