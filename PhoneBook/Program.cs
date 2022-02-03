@@ -17,7 +17,9 @@ namespace PhoneBook
                 Console.WriteLine("1-Dodać kontakt");
                 Console.WriteLine("2-Wyświetl kontakt(po podaniu numeru)");
                 Console.WriteLine("3-Wyświtl wszystkie kontakty");
-                Console.WriteLine("4-Wyświetl kontakt(po podaniu numeru)");
+                Console.WriteLine("4-Wyświetl kontakt(po podaniu nazwy)");
+                Console.WriteLine("5-Usówanie kontaktu(po podaniu numeru)");
+                Console.WriteLine("x-Wyjście z programu)");
                 string userInput = Console.ReadLine();
 
 
@@ -38,8 +40,11 @@ namespace PhoneBook
                         Console.WriteLine("Numer:");
                         string userInputNumber = Console.ReadLine();
                         int help_number = int.Parse(userInputNumber);
+                        if (userInputName.Length>3&& help_number<=9)
+                        {
+                            kontakt_list.Add(new Kontakt() { Name = userInputName, Number = help_number });
+                        }
 
-                        kontakt_list.Add(new Kontakt() {Name=userInputName, Number=help_number });
               
                         break;
                     #endregion
@@ -73,6 +78,7 @@ namespace PhoneBook
                         }
                         break;
                     #endregion
+                    #region
                     case "4":
 
                         Console.WriteLine("Podaj nazwe:");
@@ -84,6 +90,17 @@ namespace PhoneBook
                             Console.WriteLine($"{item.Name}-{item.Number}");
                         }
                         break;
+                    #endregion
+                    #region
+                    case "6":
+                        Console.WriteLine("Podaj numer do usunięci:");
+                        string userInputDeleteNumber = Console.ReadLine();
+                        int help_delete_number = int.Parse(userInputDeleteNumber);
+                        kontakt_list.RemoveAll(c => c.Number == help_delete_number);
+                        break;
+                    #endregion
+                    case "x":
+                        return;
                     default:
                         break;
                 }
