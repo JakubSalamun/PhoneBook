@@ -8,6 +8,10 @@ namespace PhoneBook
 {
     public class Kontakt
     {
+        public Kontakt()
+        {
+        }
+
         public Kontakt(string name, int number)
         {
             Name = name;

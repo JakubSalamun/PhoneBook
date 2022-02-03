@@ -8,6 +8,7 @@ namespace PhoneBook
     {
         static void Main(string[] args)
         {
+            List<Kontakt> kontakt_list = new List<Kontakt>();
             while (true)
             {
 
@@ -20,7 +21,7 @@ namespace PhoneBook
                 string userInput = Console.ReadLine();
 
 
-                List<Kontakt> kontakt_list = new List<Kontakt>();
+                
 
 
 
@@ -38,7 +39,7 @@ namespace PhoneBook
                         string userInputNumber = Console.ReadLine();
                         int help_number = int.Parse(userInputNumber);
 
-                        kontakt_list.Add(new Kontakt(userInputName, help_number));
+                        kontakt_list.Add(new Kontakt() {Name=userInputName, Number=help_number });
               
                         break;
 
