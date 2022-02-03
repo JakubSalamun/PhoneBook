@@ -43,7 +43,6 @@ namespace PhoneBook
               
                         break;
                     #endregion
-
                     #region
                     case "2":
     
@@ -65,7 +64,7 @@ namespace PhoneBook
                             }
                         break;
                     #endregion
-
+                    #region
                     case "3":
                         Console.WriteLine("Twoje kontakty ");
                         foreach (var item in kontakt_list)
@@ -73,8 +72,18 @@ namespace PhoneBook
                             Console.WriteLine($"Nazwa:{item.Name} Numer:{item.Number}");
                         }
                         break;
+                    #endregion
+                    case "4":
 
+                        Console.WriteLine("Podaj nazwe:");
+                        string userInputName_case4 = Console.ReadLine();
 
+                        var result_case4 = kontakt_list.Where(n => n.Name.Contains(userInputName_case4)).ToList();
+                        foreach (var item in result_case4)
+                        {
+                            Console.WriteLine($"{item.Name}-{item.Number}");
+                        }
+                        break;
                     default:
                         break;
                 }
